@@ -1,0 +1,12 @@
+ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style-type: none;
+  gap: 1ch;
+}
+
+li {
+  /* border: solid 1px black; */
+  font-size: 30px;
+}
