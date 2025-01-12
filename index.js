@@ -8,6 +8,7 @@ const occupations = [
   "Musician",
 ];
 const startingPrices = [30, 50, 70, 90, 110, 10];
+const maxFreelancer = 50;
 const arrayFreelancer = [
   { Name: "Name", Occupation: "Occupation", StartingPrice: "Starting Price" },
   { Name: "Alice", Occupation: "Writer", StartingPrice: 30 },
@@ -30,6 +31,9 @@ function addCarol() {
 
 // Add a randomized freelancer to the array
 function addFreelancer() {
+  if (arrayFreelancer.length >= maxFreelancer) {
+    clearInterval(addFreelanceIntervalId);
+  }
   const Name = names[Math.floor(Math.random() * names.length)];
   const Occupation =
     occupations[Math.floor(Math.random() * occupations.length)];
@@ -64,7 +68,6 @@ function render() {
   freelanceList.replaceChildren(...freelanceElements);
 
   const averagePriceElement = document.querySelector("#averagePriceValue");
-  averagePrice();
   const averageElement = document.createElement("li");
   averageElement.innerText = `Average Price: ${averagePrice().toFixed(2)}`;
   averagePriceElement.replaceChildren(averageElement);
